@@ -3,7 +3,7 @@
  * @Author: your name
  * @LastEditors: Please set LastEditors
  * @Date: 2019-03-27 10:53:27
- * @LastEditTime: 2019-03-27 11:08:17
+ * @LastEditTime: 2019-03-27 11:26:03
  -->
 <!DOCTYPE html>
 <html lang="en">
@@ -19,8 +19,8 @@
   <!-- 宏任务 (慢) setTimeout & 微任务 (快) Promise.then -->
   <!-- setImmediate 宏任务  IE 生效-->
   <!-- mutationObserver 微任务 -->
-  <!-- MessageChannel 微任务 -->
-  <!-- vscode liveserver -->
+  <!-- MessageChannel 宏任务 -->
+  <!-- vscode liveserver 消息通道 -->
   <script>
     setTimeout(() => {
       console.log('set');

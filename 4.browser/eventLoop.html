@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app"></div>
+  <script>
+    // setTimeout(() => {
+    //   console.log('out');
+    // }, 0);
+    // promise.resolve().then(data =>  {
+    //   console.log('then');
+    // })
+    // console.log('first');
+    setTimeout(() => {
+      console.log('timeout1')
+      Promise.resolve().then(data => {
+        console.log('then1');
+      }, 0)
+    })
+    Promise.resolve().then(data => {
+      console.log('then2');
+      setTimeout(() => {
+        console.log('timeout2');
+      }, 0)
+    })
+  </script>
+</body>
+</html>

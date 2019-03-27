@@ -1,0 +1,51 @@
+<!--
+ * @Description: In User Settings Edit
+ * @Author: your name
+ * @LastEditors: Please set LastEditors
+ * @Date: 2019-03-27 10:53:27
+ * @LastEditTime: 2019-03-27 11:29:35
+ -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app"></div>
+  <script>
+
+    let channel = new MessageChannel();
+
+    channel.port1.postMessage('我爱你');
+
+
+    channel.port2.onmessage = function(e) {
+      console.log(e.data);
+    }
+    Promise.resolve().then(() => {
+      console.log('promise')
+    })
+
+    console.log('hello');
+    
+
+    // let app = document.getElementById('app');
+    // let observer = new MutationObserver(function() {
+    //   console.log('节点已经更新')
+    //   console.log(app.children.length);
+    // })
+    // observer.observe(app, {
+    //   childList: true
+    // })
+    // for(let i = 0; i < 20; i++) {
+    //   app.appendChild(document.createElement('p'))
+    // }
+    // for(let i = 0; i < 20; i++) {
+    //   app.appendChild(document.createElement('span'))
+    // }
+  </script>
+</body>
+</html>
