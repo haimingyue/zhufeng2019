@@ -1,0 +1,34 @@
+<!--
+ * @Description: In User Settings Edit
+ * @Author: your name
+ * @LastEditors: Please set LastEditors
+ * @Date: 2019-03-27 10:53:27
+ * @LastEditTime: 2019-03-27 11:08:17
+ -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <!-- js 是主线程是单线程的 ajax setTimeout 多开线程-->
+  <!-- 代码从上到下先执行同步代码，然后再执行异步代码 -->
+  <!-- 宏任务 (慢) setTimeout & 微任务 (快) Promise.then -->
+  <!-- setImmediate 宏任务  IE 生效-->
+  <!-- mutationObserver 微任务 -->
+  <!-- MessageChannel 微任务 -->
+  <!-- vscode liveserver -->
+  <script>
+    setTimeout(() => {
+      console.log('set');
+    }, 0)
+    Promise.resolve().then(() => {
+      console.log('promise')
+    })
+    // vue.$nextTick(() => {})
+  </script>
+</body>
+</html>

@@ -23,8 +23,12 @@ function Promise (excutor) {
       // 发布
       self.onRejectedCallbacks.forEach(fn => fn());
     }
-  } 
-  excutor(resolve, reject);
+  }
+  try {
+    excutor(resolve, reject);
+  } catch (error) {
+    reject(error)
+  }
 } 
 
 // 这个规范是通用的，我们的promise会在别的promise中使用
@@ -64,6 +68,9 @@ function resolvePromise (promise2, x, resolve, reject) {
   }
 }
 Promise.prototype.then = function(onFulilled, onRejected) {
+  // 值的穿透
+  onFulilled = typeof onFulilled === 'function' ? onFulilled : value => value;
+  onRejected = typeof onRejected === 'function' ? onRejected : err => {throw err}
   let self = this;
   // 调用then 后需要再次返回一个全新的promise
   // 需要拿到当前then方法， 成功或者失败的结果
@@ -120,4 +127,15 @@ Promise.prototype.then = function(onFulilled, onRejected) {
   });
   return promise2;
 }
+
+Promise.defer = function() {
+  let dfd = {};
+  dfd.promise = new Promise((resolve, reject) => {
+    dfd.resolve = resolve;
+    dfd.reject = reject;
+  })
+
+  return dfd;
+}
+
 module.exports = Promise;
